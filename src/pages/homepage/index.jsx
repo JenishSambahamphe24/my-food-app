@@ -15,6 +15,8 @@ const Homepage = () => {
     // Favorites data state
     const [Favorites, setFavorite] = useState([])
 
+    //   API call successful or not
+    const [apiCalledSuccess, setApiCalledSuccess] = useState(false);
 
     const getDataFromSearchComponent = (getData) => {
 
@@ -31,6 +33,8 @@ const Homepage = () => {
                 setloadingState(false)
                 // set the recipe state
                 setRecipes(results)
+                // set apiCalled True
+                setApiCalledSuccess(true)
             }
         }
         getReceipes()
@@ -49,6 +53,7 @@ const Homepage = () => {
             localStorage.setItem('favorites', JSON.stringify(cpyFavorite))
         } else {
             alert("Item is already present in the 'Favorite List' ")
+          
         }
     }
     useEffect(() => {
@@ -66,7 +71,10 @@ const Homepage = () => {
 
     return (
         <div className="homepage">
-            <Search getDataFromSearchComponent={getDataFromSearchComponent} />
+            <Search getDataFromSearchComponent={getDataFromSearchComponent}
+                    apiCalledSuccess={apiCalledSuccess}
+                    setApiCalledSuccess={setApiCalledSuccess}
+            />
 
             {/* Show favorite Items */}
             <div className="favorites-wrapper">
@@ -84,7 +92,7 @@ const Homepage = () => {
             {
                 loadingState && <div className="loading"> Loading Recipes !! please wait</div>
             }
-
+           
             {/* Render List of Recipes  */}
             <div className="items">
                 {recipes && recipes.length > 0 ?

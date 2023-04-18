@@ -5,7 +5,7 @@ import './style.css'
     return(
       <div className="recipe-item" key={id}>
       <div>
-      <img src={image} alt="image of recipe"/>
+      <img src={image} alt="image"/>
       <p>{title}</p>
       <button onClick={addToFavorites}>Add to favorite</button>
       </div>

@@ -23,6 +23,12 @@
     text-transform: uppercase;
     color: #ffffff;
   }
+
+  .errorMessage{
+    font-size: 40px;
+    text-transform: uppercase;
+    color:rgb(95, 13, 13);
+  }
   
   .favorites-title {
     color: #fa6400;
